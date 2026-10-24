@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>我的星空宇宙</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #090b20;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: "Microsoft YaHei", sans-serif;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: blink 2s infinite alternate;
+    }
+    @keyframes blink {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+    main { z-index: 1; padding: 20px; }
+    h1 {
+      font-size: 40px;
+      text-shadow: 0 0 25px #89baff;
+    }
+    button {
+      background: #8b80ff;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 15px 25px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>✨ 欢迎来到我的宇宙 ✨</h1>
+    <p>这是我和小G一起制作的第一个网页！</p>
+    <button onclick="wish()">🌠 点击领取星星</button>
+    <p id="message"></p>
+  </main>
+
+  <script>
+    for (let i = 0; i < 120; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.animationDelay = Math.random() * 3 + "s";
+      document.body.appendChild(star);
+    }
+
+    let count = 0;
+    function wish() {
+      count++;
+      document.getElementById("message").textContent =
+        "⭐ 你已经收集了 " + count + " 颗星星！";
+    }
+  </script>
+</body>
+</html>
